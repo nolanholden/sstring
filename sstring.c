@@ -11,7 +11,7 @@
 
 #define NIL 0
 
-sstring_t* sstring_init(const sstring_size_t initial_capacity) {
+sstring_t* sstring_init_with_capacity(const sstring_size_t initial_capacity) {
   sstring_t* s = NIL;
 
   if (initial_capacity < 0)
@@ -27,7 +27,7 @@ sstring_t* sstring_init(const sstring_size_t initial_capacity) {
     return s;
   }
 
-  // OK; input validated and memory allocated.
+  // Now, input is validated and memory allocated.
   s->capacity = initial_capacity;
   s->length = 0;
 
@@ -35,7 +35,7 @@ sstring_t* sstring_init(const sstring_size_t initial_capacity) {
 }
 
 sstring_t* sstring_init(void) {
-  return sstring_init(SSTRING_DEFAULT_INITIAL_CAPACITY);
+  return sstring_init_with_capacity(SSTRING_DEFAULT_INITIAL_CAPACITY);
 }
 
 void sstring_free(sstring_t* str) {
